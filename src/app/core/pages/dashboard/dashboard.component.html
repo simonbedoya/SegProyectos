@@ -1,0 +1,21 @@
+<mat-sidenav-container class="dashboard side-dark">
+  <mat-sidenav class="sidenav list-dark" #sideNav [mode]="(isPhone | async) ? 'over' : 'side'" 
+    [opened]="!(isPhone | async)" fixedInViewport>
+    <mat-nav-list>
+      <a routerLink="/dashboard/project" routerLinkActive="active" mat-list-item><mat-icon>movie</mat-icon> Proyectos</a>
+      <a routerLink="/dashboard/activities" routerLinkActive="active" mat-list-item><mat-icon>tv</mat-icon> Actividades</a>
+      <a routerLink="/dashboard/profile" routerLinkActive="active" mat-list-item><mat-icon>receipt</mat-icon> Perfil</a>
+      <a routerLink="/dashboard/settings" routerLinkActive="active" mat-list-item><mat-icon>fastfood</mat-icon> Configuración</a>
+      <a routerLinkActive="active" mat-list-item (click)="closeSession()"><mat-icon>fastfood</mat-icon> Cerrar Sesión</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="dashboard-content">
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sideNav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span style="margin-left: 15px;">{{nameToolBar}}</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

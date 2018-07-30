@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  ELEMENT_DATA: [
+    { code: '12345', name: 'Proyecto 1', dateInit: new Date(), dateEnd: new Date(), options: '' },
+    { code: '54321', name: 'Proyecto 2', dateInit: new Date(), dateEnd: new Date(), options: '' }
+  ]
 };
 
 /*

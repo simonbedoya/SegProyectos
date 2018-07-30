@@ -1,0 +1,34 @@
+<div class="container section">
+  <div style="margin-bottom: 10px;">
+    <button mat-raised-button (click)="goToAdd()"><mat-icon>add-box</mat-icon> Agregar Proyecto </button>
+  </div>
+  <table mat-table multiTemplateDataRows [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef> Código </th>
+      <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="dateInit">
+      <th mat-header-cell *matHeaderCellDef> Fecha Inicial </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateInit}} </td>
+    </ng-container>
+    <ng-container matColumnDef="dateEnd">
+      <th mat-header-cell *matHeaderCellDef> Fecha Final </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateEnd}} </td>
+    </ng-container>
+    <ng-container matColumnDef="options">
+      <th mat-header-cell *matHeaderCellDef> Opciones </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="goToDetail(element)">
+          <mat-icon>movie</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+</div>

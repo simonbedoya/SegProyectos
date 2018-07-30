@@ -1,0 +1,46 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$appPrimary : mat-palette($mat-indigo);
+$appSecondary : mat-palette($mat-cyan);
+$appWarn : mat-palette($mat-red);
+
+$appTheme: mat-light-theme($appPrimary, $appSecondary, $appWarn);
+$appDarkTheme: mat-dark-theme($appPrimary, $appSecondary, $appWarn);
+
+@include angular-material-theme($appTheme);
+
+.dark-theme{
+    @include angular-material-theme($appDarkTheme);
+}
+
+.side-dark{
+    $background-dark : map-get($appDarkTheme, background );   
+    $background-side : map-merge($background-dark, (card: map_get($mat-grey, 900), dialog: map_get($mat-grey, 900),));  
+    $side-dark :map-merge($appDarkTheme, (background: $background-side) );   
+    @include mat-sidenav-theme($side-dark);   
+}
+   
+   
+.list-dark{   
+    $foreground-dark : map-get($appDarkTheme ,foreground );   
+    $foreground-side : map-merge($foreground-dark , (text:#999) );   
+    $list-dark :map-merge($appDarkTheme, (foreground: $foreground-side) );  
+    @include mat-list-theme($list-dark) 
+}
+
+/*$mapa : (
+    "rojo": #ff0000,
+    10: 10px,
+    "azul": #00ff00
+);
+
+$dimension : map-get($mapa, 10);
+
+$mapa2: (
+    "amarillo": #ffff00,
+    10: 10%
+);
+
+$mapa3: map-merge($mapa, $mapa2);*/

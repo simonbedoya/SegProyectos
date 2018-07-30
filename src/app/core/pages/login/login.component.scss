@@ -1,0 +1,17 @@
+.login{
+    background-image: url('../../../../assets/images/background-4.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; 
+    padding: 50px;   
+}
+
+.border_login{
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 0px solid #000000;
+    background-color: #F0EDED;
+    padding: 30px;
+}

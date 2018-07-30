@@ -1,0 +1,19 @@
+<div fxLayout="row" fxLayoutAlign="start center" class="login">
+
+  <div fxFlex="0 0 100%" fxFlex.gt-sm="0 0 50%" fxFlexOffset.gt-sm="25%" fxFlex.gt-md="0 0 30%" fxFlexOffset.gt-md="70%" class=border_login>
+
+      <form #loginForm="ngForm" fxLayout="row wrap">
+          <mat-form-field appearance="outline" fxFlex="100%">
+              <mat-label>Usuario</mat-label>
+              <input matInput type="text" [(ngModel)]="username" name="usr">
+          </mat-form-field>
+          <mat-form-field appearance="outline" fxFlex="100%">
+              <mat-label>Contraseña</mat-label>
+              <input matInput type="password" [(ngModel)]="password" name="pass">
+          </mat-form-field>
+          <button mat-button color="accent" fxFlex="50%">Registrate</button>
+          <button mat-raised-button color="accent" fxFlex="50%" (click)="login()">Entrar</button>
+          <p fxFlex="100%" class="error" *ngIf="error">Usuario o contraseña erroneos</p>
+      </form>
+  </div>
+</div>
