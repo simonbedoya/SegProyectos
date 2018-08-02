@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Router, ActivatedRoute } from '../../../../../node_modules/@angular/router';
 import { DashboardComponent } from '../../../core/pages/dashboard/dashboard.component';
 import { environment } from '../../../../environments/environment';
 import { ProjectService } from '../../services/project.service';
+import { Location } from '../../../../../node_modules/@angular/common';
+import { MatTable } from '../../../../../node_modules/@angular/material';
 
 @Component({
   selector: 'app-list-project',
@@ -19,12 +21,13 @@ import { ProjectService } from '../../services/project.service';
 })
 export class ListProjectComponent {
   private data = environment.ELEMENT_DATA;
+  @ViewChild('tableProject') table: MatTable<ProjectElement>;
 
   dataSource = this.data;
   columns = ['code', 'name', 'typeProject', 'dateInit', 'dateEnd', 'options'];
 
   constructor(private router: Router, private route: ActivatedRoute, private dashboard: DashboardComponent,
-    private projectservice: ProjectService) {
+    private projectservice: ProjectService, private location: Location) {
     this.dashboard.nameToolBar = 'Proyectos';
   }
 
@@ -32,9 +35,26 @@ export class ListProjectComponent {
     this.router.navigate(['add'], { relativeTo: this.route });
   }
 
+  goToDelete(project: ProjectElement) {
+    console.log(project.name);
+    const index = -1;
+    for (let i = 0; i < this.dataSource.length; i++) {
+      if (this.dataSource[i]['code'] === project.code) {
+        this.dataSource.splice(i, 1);
+        break;
+      }
+    }
+    this.table.renderRows();
+    console.log(index);
+  }
+
   goToDetail(project: ProjectElement) {
     this.projectservice.data = project;
     this.router.navigate([project.code], { relativeTo: this.route });
+  }
+
+  goToAddActivity() {
+    this.router.navigate(['addActivity'], { relativeTo: this.route });
   }
 }
 
@@ -58,4 +78,5 @@ export class Activity {
   dateRegister: Date;
   state: boolean;
   time: number;
+  nameProject: string;
 }

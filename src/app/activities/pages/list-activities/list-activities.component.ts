@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Activity, ProjectElement } from '../../../project/pages/list-project/list-project.component';
 import { Router, ActivatedRoute } from '../../../../../node_modules/@angular/router';
-import { MatDialog } from '../../../../../node_modules/@angular/material';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '../../../../../node_modules/@angular/material';
 import { DashboardComponent } from '../../../core/pages/dashboard/dashboard.component';
 import { environment } from '../../../../environments/environment';
 
@@ -23,6 +23,7 @@ export class ListActivitiesComponent implements OnInit {
   loadDataActivity() {
     for (const project of this.projects) {
       for (const activity of project.activities) {
+        activity.nameProject = project.name;
         this.dataActivities.push(activity);
       }
     }
@@ -32,8 +33,11 @@ export class ListActivitiesComponent implements OnInit {
     this.router.navigate(['add'], { relativeTo: this.route });
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(ListActivitiDialogComponent);
+  openDialog(activity: Activity) {
+    console.log(activity.toString());
+    const dialogRef = this.dialog.open(ListActivitiDialogComponent, {
+      data: { activity: activity}
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -50,4 +54,13 @@ export class ListActivitiesComponent implements OnInit {
   templateUrl: './list-activities-dialog.html',
   styleUrls: []
 })
-export class ListActivitiDialogComponent { }
+export class ListActivitiDialogComponent {
+  constructor(
+    public dialogRef: MatDialogRef<ListActivitiDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}

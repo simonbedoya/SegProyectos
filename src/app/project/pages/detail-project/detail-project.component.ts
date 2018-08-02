@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Activity, ProjectElement } from '../list-project/list-project.component';
 import { ProjectService } from '../../services/project.service';
+import { Router, ActivatedRoute } from '../../../../../node_modules/@angular/router';
 import { DashboardComponent } from '../../../core/pages/dashboard/dashboard.component';
 
 @Component({
@@ -12,7 +13,8 @@ export class DetailProjectComponent implements OnInit {
 
   project: ProjectElement;
 
-  constructor(private projectService: ProjectService, private dashBoard: DashboardComponent) {
+  constructor(private router: Router, private route: ActivatedRoute, private projectService: ProjectService,
+    private dashBoard: DashboardComponent) {
     this.dashBoard.nameToolBar = 'Detalles Proyecto';
     if (this.projectService.data == null) {
       this.project = new ProjectElement();
@@ -24,4 +26,7 @@ export class DetailProjectComponent implements OnInit {
   ngOnInit() {
   }
 
+  goToAddActivity() {
+    this.router.navigate(['addActivity'], { relativeTo: this.route });
+  }
 }

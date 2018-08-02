@@ -1,1 +1,29 @@
-<p>Hola dialogo</p>
+<div align="end">
+  <button mat-icon-button color="accent" (click)="onNoClick()"><mat-icon>close</mat-icon></button>
+</div>
+<form #projectForm="ngForm" fxLayout="row wrap">
+  <mat-form-field fxFlex="calc(66% - 10px)" class="margin-form">
+    <input matInput type="text" placeholder="Nombre" [(ngModel)]="data.activity.name" name="name" disabled>
+  </mat-form-field>
+  <mat-form-field fxFlex="100%">
+    <textarea matInput type="text" placeholder="Descripción" rows="2" maxlength="270" [(ngModel)]="data.activity.description"
+      name="description" disabled></textarea>
+  </mat-form-field>
+  <mat-form-field fxFlex="100%">
+    <textarea matInput type="text" placeholder="Observaciones" rows="2" maxlength="270" [(ngModel)]="data.activity.observation"
+      name="observation" disabled></textarea>
+  </mat-form-field>
+  <mat-form-field fxFlex="calc(33% - 10px)" class="margin-form">
+    <input matInput type="number" placeholder="Dias de ejecución" max="20" [(ngModel)]="data.activity.time" name="time" disabled>
+  </mat-form-field>
+  <mat-form-field fxFlex="63%">
+    <mat-select placeholder="Estado" [(ngModel)]="data.activity.state" name="typeProject" disabled>
+      <mat-option value=true>Activa</mat-option>
+      <mat-option value=false>Inactiva</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field fxFlex="calc(66% - 10px)" class="margin-form">
+    <input matInput type="text" placeholder="Nombre del proyecto" max="20" [(ngModel)]="data.activity.nameProject" name="nameProject"
+      disabled>
+  </mat-form-field>  
+</form>

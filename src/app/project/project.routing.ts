@@ -10,7 +10,9 @@ export const projectRoutes: Routes = [
             [
                 { path: '', component: ListProjectComponent },
                 { path: 'add', component: AddProjectComponent },
-                { path: ':id', component: DetailProjectComponent }
+                { path: 'addActivity', redirectTo: '/dashboard/activities/add', pathMatch: 'full'},
+                { path: ':id', component: DetailProjectComponent },
+                { path: ':id/addActivity', redirectTo: '/dashboard/activities/add', pathMatch: 'full'}
             ]
     }
 ];

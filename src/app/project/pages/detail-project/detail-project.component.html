@@ -43,6 +43,9 @@
   <div class="border_detail">
     <div style="margin-bottom: 10px;">
       <h4>Actividades</h4>
+      <button mat-icon-button (click)="goToAddActivity()" title="Agregar actividades">
+        <mat-icon color="accent">playlist_add</mat-icon>
+      </button>
     </div>
     <div fxLayout="row wrap" fxLayoutGap="15px"  fxLayoutAlign="space-between center">
       <div fxFlex="0 0 100%" fxFlex.gt-sm="0 0 calc(50%-15px)" fxFlex.gt-md="0 0 calc(33% - 15px)" *ngFor="let m of project.activities">

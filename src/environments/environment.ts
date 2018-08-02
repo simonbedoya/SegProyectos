@@ -5,15 +5,34 @@
 export const environment = {
   production: false,
   ELEMENT_DATA: [
-    { code: '12345', name: 'Proyecto 1', typeProject: 'vivienda', dateInit: new Date(), dateEnd: new Date(), options: '', activities: [
-      {name: 'Actividad 1', description: 'Descripcion', observation: '', dateRegister: new Date(), state: true, time: 30},
-      {name: 'Actividad 2', description: 'Descripcion', observation: '', dateRegister: new Date(), state: true, time: 30},
-      {name: 'Actividad 3', description: 'Descripcion', observation: '', dateRegister: new Date(), state: true, time: 30},
-      {name: 'Actividad 4', description: 'Descripcion', observation: '', dateRegister: new Date(), state: true, time: 30}
-    ]},
-    { code: '54321', name: 'Proyecto 2', typeProject: 'agricola', dateInit: new Date(), dateEnd: new Date(), options: '', activities: [
-      {name: 'Actividad proyecto 2', description: 'Descripcion', observation: '', dateRegister: new Date(), state: true, time: 30}
-    ]}
+    {
+      code: '12345', name: 'Proyecto 1', typeProject: 'vivienda', dateInit: new Date(), dateEnd: new Date(), options: '', activities: [
+        {
+          name: 'Actividad 1', description: 'Descripcion', observation: '', dateRegister: new Date(), state: true, time: 30,
+          nameProject: ''
+        },
+        {
+          name: 'Actividad 2', description: 'Descripcion', observation: '', dateRegister: new Date(), state: true, time: 30,
+          nameProject: ''
+        },
+        {
+          name: 'Actividad 3', description: 'Descripcion', observation: '', dateRegister: new Date(), state: true, time: 30,
+          nameProject: ''
+        },
+        {
+          name: 'Actividad 4', description: 'Descripcion', observation: '', dateRegister: new Date(), state: true, time: 30,
+          nameProject: ''
+        }
+      ]
+    },
+    {
+      code: '54321', name: 'Proyecto 2', typeProject: 'agricola', dateInit: new Date(), dateEnd: new Date(), options: '', activities: [
+        {
+          name: 'Actividad proyecto 2', description: 'Descripcion', observation: '', dateRegister: new Date(), state: false, time: 30,
+          nameProject: ''
+        }
+      ]
+    }
   ]
 };
 
