@@ -1,16 +1,22 @@
-<div class="container section" fxLayout="row wrap" fxLayoutGap="15px">
-  <div fxFlex="0 0 100%" fxFlex.gt-sm="0 0 calc(50%-15px)" fxFlex.gt-md="0 0 calc(33% - 15px)" *ngFor="let m of data">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>{{m.name}}</mat-card-title>
-      </mat-card-header>
-      <img src="">
-      <mat-card-content>
-        <p>{{m.time}}</p>
-      </mat-card-content>
-      <mat-card-actions align="end">
-        <button mat-button color="accent">Detalle</button>
-      </mat-card-actions>
-    </mat-card>
+<div class="container section">
+  <div style="margin-bottom: 10px;">
+    <button mat-raised-button (click)="goToAdd()">
+      <mat-icon>add-box</mat-icon> Agregar Actividad </button>
+  </div>
+  <div fxLayout="row wrap" fxLayoutGap="15px">
+    <div fxFlex="0 0 100%" fxFlex.gt-sm="0 0 calc(50%-15px)" fxFlex.gt-md="0 0 calc(33% - 15px)" *ngFor="let m of dataActivities">
+      <mat-card>
+        <mat-card-content>
+          <h4>{{m.name}}</h4>
+          <p>{{m.description}}</p>
+          <p>{{m.observation}}</p>
+          <p>{{m.time}} dias</p>
+          <p>{{m.state ? 'Activa' : 'Finalizada'}}</p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-button color="accent" (click)="openDialog()">Detalle</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </div>
 </div>

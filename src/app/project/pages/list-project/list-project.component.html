@@ -11,19 +11,23 @@
       <th mat-header-cell *matHeaderCellDef> Nombre </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
+    <ng-container matColumnDef="typeProject">
+        <th mat-header-cell *matHeaderCellDef> Tipo </th>
+        <td mat-cell *matCellDef="let element"> {{element.typeProject}} </td>
+      </ng-container>
     <ng-container matColumnDef="dateInit">
       <th mat-header-cell *matHeaderCellDef> Fecha Inicial </th>
-      <td mat-cell *matCellDef="let element"> {{element.dateInit}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.dateInit | fecha :'dd/MM//yyyy'}} </td>
     </ng-container>
     <ng-container matColumnDef="dateEnd">
       <th mat-header-cell *matHeaderCellDef> Fecha Final </th>
-      <td mat-cell *matCellDef="let element"> {{element.dateEnd}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.dateEnd | fecha :'dd/MM//yyyy'}} </td>
     </ng-container>
     <ng-container matColumnDef="options">
       <th mat-header-cell *matHeaderCellDef> Opciones </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button (click)="goToDetail(element)">
-          <mat-icon>movie</mat-icon>
+        <button mat-icon-button (click)="goToDetail(element)" title="Ver detalles">
+          <mat-icon>visibility</mat-icon>
         </button>
       </td>
     </ng-container>

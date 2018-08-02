@@ -1,10 +1,43 @@
 <div class="container section border_detail">
-  <form>
-    <mat-form-field class="full-width">
-      <input matInput type="text" placeholder="Nombre del Proyecto" [(ngModel)]="name" name="name">
+  <h3>Nuevo proyecto</h3>
+  <form #projectForm="ngForm" fxLayout="row wrap">
+    <mat-form-field fxFlex="calc(33% - 10px)" class="margin-form">
+      <input matInput type="text" placeholder="Código" [(ngModel)]="project.code" name="code" required>
     </mat-form-field>
-    <mat-form-field>
-      <input matInput type="text" placeholder="Nombre del Proyecto" [(ngModel)]="name" name="name">
+    <mat-form-field fxFlex="66%">
+      <input matInput type="text" placeholder="Nombre" [(ngModel)]="project.name" name="name" required>
     </mat-form-field>
+    <mat-form-field fxFlex="100%">
+      <textarea matInput type="text" placeholder="Descripción" rows="2" maxlength="270" [(ngModel)]="project.description" name="description"></textarea>
+    </mat-form-field>
+    <mat-form-field fxFlex="100%">
+      <textarea matInput type="text" placeholder="Observaciones" rows="2" maxlength="270" [(ngModel)]="project.observation" name="observation"></textarea>
+    </mat-form-field>
+    <mat-form-field fxFlex="calc(33% - 10px)" class="margin-form">
+      <input matInput type="number" placeholder="Numero empleados" max="20" [(ngModel)]="project.employes" name="employes">
+    </mat-form-field>
+    <mat-form-field fxFlex="66%">
+      <mat-select placeholder="Tipo de proyecto" [(ngModel)]="project.typeProject" name="typeProject">
+        <mat-option value="vivienda">Vivienda</mat-option>
+        <mat-option value="agricola">Agricola</mat-option>
+        <mat-option value="industrial">Industrial</mat-option>
+        <mat-option value="comercial">Comercial</mat-option>
+        <mat-option value="otro">otro</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex="calc(50% - 10px)" class="margin-form">
+      <input matInput [matDatepicker]="dateInitPicker" placeholder="Fecha inicio proyecto" [(ngModel)]="project.dateInit" name="dateInit"
+        [min]="minDate" required>
+      <mat-datepicker-toggle matSuffix [for]="dateInitPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dateInitPicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field fxFlex="50%">
+      <input matInput [matDatepicker]="dateEndPicker" placeholder="Fecha final proyecto" [(ngModel)]="project.dateEnd" name="dateEnd"
+        [min]="project.dateInit" required>
+      <mat-datepicker-toggle matSuffix [for]="dateEndPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dateEndPicker></mat-datepicker>
+    </mat-form-field>
+    <button mat-button color="accent" fxFlex="50%" (click) = "backListProyects()">Cancelar</button>
+    <button mat-raised-button color="accent" fxFlex="50%" (click)="saveProject()">Crear Proyecto</button>
   </form>
 </div>

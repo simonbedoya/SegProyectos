@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Activity, ProjectElement } from '../../../project/pages/list-project/list-project.component';
+import { Router, ActivatedRoute } from '../../../../../node_modules/@angular/router';
+import { MatDialog } from '../../../../../node_modules/@angular/material';
+import { DashboardComponent } from '../../../core/pages/dashboard/dashboard.component';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-list-activities',
@@ -7,20 +12,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListActivitiesComponent implements OnInit {
 
-  data: Activitie[] = ELEMENT_DATA;
+  private projects = environment.ELEMENT_DATA;
+  dataActivities: Activity[] = [];
 
-  constructor() { }
+  constructor(public dialog: MatDialog, private dashBoard: DashboardComponent, private router: Router, private route: ActivatedRoute) {
+    this.dashBoard.nameToolBar = 'Actividades';
+    this.loadDataActivity();
+  }
+
+  loadDataActivity() {
+    for (const project of this.projects) {
+      for (const activity of project.activities) {
+        this.dataActivities.push(activity);
+      }
+    }
+  }
+
+  goToAdd() {
+    this.router.navigate(['add'], { relativeTo: this.route });
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ListActivitiDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   ngOnInit() {
   }
 
 }
 
-export class Activitie {
-  name: string;
-  time: number;
-}
-
-const ELEMENT_DATA: Activitie[] = [
-  {name: 'Actividad 1', time: 20}
-];
+@Component({
+  selector: 'app-list-activitie-dialog',
+  templateUrl: './list-activities-dialog.html',
+  styleUrls: []
+})
+export class ListActivitiDialogComponent { }

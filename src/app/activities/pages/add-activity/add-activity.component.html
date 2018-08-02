@@ -1,0 +1,32 @@
+<div class="container section border_detail">
+    <h3>Nueva actividad</h3>
+    <form #projectForm="ngForm" fxLayout="row wrap">
+      <mat-form-field fxFlex="calc(66% - 10px)" class="margin-form">
+        <input matInput type="text" placeholder="Nombre" [(ngModel)]="activity.name" name="name" required>
+      </mat-form-field>      
+      <mat-form-field fxFlex="100%">
+        <textarea matInput type="text" placeholder="Descripción" rows="2" maxlength="270" [(ngModel)]="activity.description" name="description"></textarea>
+      </mat-form-field>
+      <mat-form-field fxFlex="100%">
+        <textarea matInput type="text" placeholder="Observaciones" rows="2" maxlength="270" [(ngModel)]="activity.observation" name="observation"></textarea>
+      </mat-form-field>
+      <mat-form-field fxFlex="calc(33% - 10px)" class="margin-form">
+        <input matInput type="number" placeholder="Dias de ejecución" max="20" [(ngModel)]="activity.time" name="time" required>
+      </mat-form-field>
+      <mat-form-field fxFlex="63%">
+        <mat-select placeholder="Estado" [(ngModel)]="activity.state" name="typeProject" required>
+          <mat-option value=true>Activa</mat-option>
+          <mat-option value=false>Inactiva</mat-option>
+        </mat-select>
+      </mat-form-field>    
+      <mat-form-field fxFlex="63%">
+          <mat-select placeholder="Proyecto" [(ngModel)]="codeSelectProject" name="typeProject" required>
+            <mat-option *ngFor="let project of dataProjects" [value] = "project.code">
+              {{project.code +' - '+ project.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>  
+      <button mat-button color="accent" fxFlex="50%" (click) = "backListActivities()">Cancelar</button>
+      <button mat-raised-button color="accent" fxFlex="50%" (click)="saveActivity()">Crear Proyecto</button>
+    </form>
+  </div>

@@ -5,8 +5,15 @@
 export const environment = {
   production: false,
   ELEMENT_DATA: [
-    { code: '12345', name: 'Proyecto 1', dateInit: new Date(), dateEnd: new Date(), options: '' },
-    { code: '54321', name: 'Proyecto 2', dateInit: new Date(), dateEnd: new Date(), options: '' }
+    { code: '12345', name: 'Proyecto 1', typeProject: 'vivienda', dateInit: new Date(), dateEnd: new Date(), options: '', activities: [
+      {name: 'Actividad 1', description: 'Descripcion', observation: '', dateRegister: new Date(), state: true, time: 30},
+      {name: 'Actividad 2', description: 'Descripcion', observation: '', dateRegister: new Date(), state: true, time: 30},
+      {name: 'Actividad 3', description: 'Descripcion', observation: '', dateRegister: new Date(), state: true, time: 30},
+      {name: 'Actividad 4', description: 'Descripcion', observation: '', dateRegister: new Date(), state: true, time: 30}
+    ]},
+    { code: '54321', name: 'Proyecto 2', typeProject: 'agricola', dateInit: new Date(), dateEnd: new Date(), options: '', activities: [
+      {name: 'Actividad proyecto 2', description: 'Descripcion', observation: '', dateRegister: new Date(), state: true, time: 30}
+    ]}
   ]
 };
 

@@ -1,24 +1,58 @@
 <div class="container section">
   <div style="margin-bottom: 20px;" class="border_detail">
-    Detalles proyecto
+    <h3>Detalles del proyecto</h3>
+    <form #projectForm="ngForm" fxLayout="row wrap">
+      <mat-form-field fxFlex="calc(33% - 10px)" class="margin-form">
+        <input matInput type="text" placeholder="Código" [(ngModel)]="project.code" name="code" disabled>
+      </mat-form-field>
+      <mat-form-field fxFlex="66%">
+        <input matInput type="text" placeholder="Nombre" [(ngModel)]="project.name" name="name" disabled>
+      </mat-form-field>
+      <mat-form-field fxFlex="100%">
+        <textarea matInput type="text" placeholder="Descripción" rows="2" maxlength="270" [(ngModel)]="project.description" name="description" disabled></textarea>
+      </mat-form-field>
+      <mat-form-field fxFlex="100%">
+        <textarea matInput type="text" placeholder="Observaciones" rows="2" maxlength="270" [(ngModel)]="project.observation" name="observation" disabled></textarea>
+      </mat-form-field>
+      <mat-form-field fxFlex="calc(33% - 10px)" class="margin-form">
+        <input matInput type="number" placeholder="Numero empleados" max="20" [(ngModel)]="project.employes" name="employes" disabled>
+      </mat-form-field>
+      <mat-form-field fxFlex="66%">
+        <mat-select placeholder="Tipo de proyecto" [(ngModel)]="project.typeProject" name="typeProject" disabled>
+          <mat-option value="vivienda">Vivienda</mat-option>
+          <mat-option value="agricola">Agricola</mat-option>
+          <mat-option value="industrial">Industrial</mat-option>
+          <mat-option value="comercial">Comercial</mat-option>
+          <mat-option value="otro">otro</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field fxFlex="calc(50% - 10px)" class="margin-form">
+        <input matInput [matDatepicker]="dateInitPicker" placeholder="Fecha inicio proyecto" [(ngModel)]="project.dateInit" name="dateInit"
+        disabled>
+        <mat-datepicker-toggle matSuffix [for]="dateInitPicker"></mat-datepicker-toggle>
+        <mat-datepicker #dateInitPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field fxFlex="50%">
+        <input matInput [matDatepicker]="dateEndPicker" placeholder="Fecha final proyecto" [(ngModel)]="project.dateEnd" name="dateEnd"
+          disabled>
+        <mat-datepicker-toggle matSuffix [for]="dateEndPicker"></mat-datepicker-toggle>
+        <mat-datepicker #dateEndPicker></mat-datepicker>
+      </mat-form-field>
+    </form>
   </div>
   <div class="border_detail">
     <div style="margin-bottom: 10px;">
       <h4>Actividades</h4>
     </div>
-    <div fxLayout="row wrap" fxLayoutGap="15px">
-      <div fxFlex="0 0 100%" fxFlex.gt-sm="0 0 calc(50%-15px)" fxFlex.gt-md="0 0 calc(33% - 15px)" *ngFor="let m of data">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>{{m.name}}</mat-card-title>
-          </mat-card-header>
-          <img src="">
+    <div fxLayout="row wrap" fxLayoutGap="15px"  fxLayoutAlign="space-between center">
+      <div fxFlex="0 0 100%" fxFlex.gt-sm="0 0 calc(50%-15px)" fxFlex.gt-md="0 0 calc(33% - 15px)" *ngFor="let m of project.activities">
+        <mat-card>          
           <mat-card-content>
-            <p>{{m.time}}</p>
+            <h4>{{m.name}}</h4>
+            <p>{{m.description}}</p>
+            <p>{{m.observation}}</p>
+            <p>{{m.time}} dias</p><p>{{m.state ? 'Activa' : 'Finalizada'}}</p>
           </mat-card-content>
-          <mat-card-actions align="end">
-            <button mat-button color="accent">Detalle</button>
-          </mat-card-actions>
         </mat-card>
       </div>
     </div>

@@ -1,6 +1,26 @@
 .full-width {
-    width: 100%;
-  }
+    width: calc(100% - 10px);    
+    margin-right: 10px;
+}
+
+.half-width {
+    width: calc(50% - 10px);
+    margin-right: 10px;
+}
+
+.third-width {
+    width: calc(33% - 10px);
+    margin-right: 10px;
+}
+
+.second-width {
+    width: calc(66% - 10px);
+    margin-right: 10px;
+}
+
+.margin-form {
+    margin-right: 10px;
+}
 
 .border_detail{
     border-radius: 0px 0px 0px 0px;

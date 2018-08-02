@@ -3,6 +3,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { Router, ActivatedRoute } from '../../../../../node_modules/@angular/router';
 import { DashboardComponent } from '../../../core/pages/dashboard/dashboard.component';
 import { environment } from '../../../../environments/environment';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'app-list-project',
@@ -20,9 +21,10 @@ export class ListProjectComponent {
   private data = environment.ELEMENT_DATA;
 
   dataSource = this.data;
-  columns = ['code', 'name', 'dateInit', 'dateEnd', 'options'];
+  columns = ['code', 'name', 'typeProject', 'dateInit', 'dateEnd', 'options'];
 
-  constructor(private router: Router, private route: ActivatedRoute, private dashboard: DashboardComponent) {
+  constructor(private router: Router, private route: ActivatedRoute, private dashboard: DashboardComponent,
+    private projectservice: ProjectService) {
     this.dashboard.nameToolBar = 'Proyectos';
   }
 
@@ -31,6 +33,7 @@ export class ListProjectComponent {
   }
 
   goToDetail(project: ProjectElement) {
+    this.projectservice.data = project;
     this.router.navigate([project.code], { relativeTo: this.route });
   }
 }
@@ -38,7 +41,21 @@ export class ListProjectComponent {
 export class ProjectElement {
   code: string;
   name: string;
+  description: string;
+  observation: string;
+  employes: number;
+  typeProject: string;
   dateInit: Date;
   dateEnd: Date;
   options: string;
+  activities: Activity[];
+}
+
+export class Activity {
+  name: string;
+  description: string;
+  observation: string;
+  dateRegister: Date;
+  state: boolean;
+  time: number;
 }
